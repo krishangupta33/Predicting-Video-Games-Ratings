@@ -1,21 +1,16 @@
----
-title: "R Notebook"
-output:
-  word_document: default
-  html_document:
-    df_print: paged
----
-Attaching the dataset
+#Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+#When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+#The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 
-```{r}
 attach(video_games)
-```
-```{r}
-# Question 1 - i
-#1A
+
 names(video_games)
 
+# Question 1 - i
+#1A
 summary(video_games$score)
 
 #1B
@@ -33,10 +28,7 @@ boxplot(video_games$sales_global, col = "green", main = "Box Plot of Sales Globa
 
 #1F
 hist(video_games$sales_global, breaks = 100, col = "green", main = "Histogram of Sales Global", xlab = "Sales Global")
-```
 
-
-```{r}
 # Question 1 - iii
 
 #1G
@@ -81,9 +73,6 @@ plot(video_games$count_critic, video_games$score, main = "Count Critic vs. Score
 legend("bottomright", legend = levels(factor(video_games$genre)), col = 1:7, pch = 20)
 par(mfrow = c(1, 1))
 
-```
-
-```{r}
 # Question 2-A
 
 # Fit a linear regression model
@@ -128,9 +117,7 @@ plot(sales_global,score, ylab = "Score", xlab = "Sales Global", main = "Scatterp
 visreg(regression_model_sales, scale = "linear", alpha = 0.05)  # 95% confidence interval
 
 
-```
 
-```{r}
 # Question 2-B
 # Perform a simple linear regression
 model_release_year <- lm(score ~ release_year, data = video_games)
@@ -165,12 +152,7 @@ plot(score, release_year, xlab = "Score", ylab = "Release Year", main = "Scatter
 # Add the regression line with confidence intervals
 visreg(model_release_year, scale = "linear", alpha = 0.05)  # 95% confidence interval
 
-```
 
-
-
-
-```{r}
 # Question 2C - 
 
 # Perform a simple linear regression
@@ -205,13 +187,7 @@ plot(score, count_critic, xlab = "Score", ylab = "Release Year", main = "Scatter
 
 # Add the regression line with confidence intervals
 visreg(model_count_critic, scale = "linear", alpha = 0.05)  # 95% confidence interval
-```
 
-
-
-
-
-```{r}
 # Question 3 - 
 
 # 3 - A
@@ -255,9 +231,7 @@ count_critic_new <- 80
 predicted_score_count_critic <- bo_count_critic + b1_count_critic * count_critic_new
 
 cat("Predicted Score for a Video Game Reviewed by 80 Critics:", predicted_score_count_critic, "\n")
-```
 
-```{r}
 #4B
 mreg=lm(score~sales_global + release_year + count_critic)
 summary(mreg)
@@ -267,9 +241,7 @@ new_df <- data.frame(sales_global = 0.75, release_year = 2009, count_critic = 80
 score4 <- predict(mreg, new_df)
 score4
 
-```
 
-```{r}
 #5A
 video_games$Nintendo <- ifelse(video_games$publisher == "Nintendo", 1, 0)
 attach(video_games)
@@ -294,9 +266,7 @@ abline(b0,b1, col = "blue" , lwd = 2, lty = 2)
 legend("topleft", pch=1, col=c( "green", "blue" ), c( "Nintendo = 1", "Nintendo = 0"))
 
 
-```
 
-```{r}
 #6A
 length(unique(video_games$genre))
 table(genre)
@@ -308,9 +278,7 @@ attach(video_games)
 mreg2=lm(score~genre)
 summary(mreg2)
 
-```
 
-```{r}
 #7A
 video_games$strategy <- ifelse(video_games$genre == "Strategy", 1, 0)
 attach(video_games)
@@ -333,7 +301,26 @@ plot(release_year, score , col=ifelse(Nintendo=="1", "green", "blue"), pch = 17,
 abline(b0+b2,b1+b3, col = "green" , lwd = 2, lty = 2)
 abline(b0,b1, col = "blue" , lwd = 2, lty = 2)
 legend("bottomleft", pch=17, col=c( "green", "blue" ), c( "Nintendo = 1", "Nintendo = 0"))
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
